@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>리뷰</title>
+</head>
+
+<style>
+.order{
+  transform: translate(-50%, 0);
+  position: absolute;
+  top: 20%;
+  left:50%;
+  text-align: center;
+}
+
+td{
+  font-size: 21px;
+}
+th{
+  margin: 20px;
+  font-size: 24px;
+}
+  img{
+    width: 100px;
+    height: 100px;
+  }
+  .o_no{
+    width: 50px;
+  }
+  .o_img{
+    width: 110px;
+  }
+  .o_name{
+    width: 100px;
+  }
+  .o_date{
+    width: 200px;
+  }
+  .o_rec{
+    width: 200px;
+  }
+  .o_state{
+    width: 50px;
+  }
+  .o_price{
+    width: 100px;
+  }
+</style>
+
+<body>
+  <div class="order">
+    <h2>주문 내역<h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="o_no">주문번호</th>
+          <th class="o_img">이미지</th>
+          <th class="o_name">상품 이름</th>
+          <th class="o_date">주문날짜</th>
+         
+          <th class="o_state">주문 상태</th>
+          <th class="o_price">주문 가격</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(var i = 0;i<order_no.length; i++) {
+        var imgArray = img[i].split(",");
+        var nameArray = name[i].split(",")%>
+        <tr>
+          <td><%=order_no[i]%></td>
+
+          <td><%for(var j = 0; j<imgArray.length; j++){%><img src = "/<%=imgArray[j]%>", alt=""></br>  <%}%></td>
+
+          <td><%for(var k = 0; k<nameArray.length; k++){%></br><%=nameArray[k]%></br></br></br><%}%></td>
+          <td><%=date[i]%></td>
+    
+          <td><%=state[i]%></br>
+            <%if(state[i] == "대기"){%>
+              <form action =  "./e_submit/:<%=order_no[i]%>" method="post"><input class = "accept" type = "submit" value = "수락"></input></form>
+              <form action = "./e_reject/:<%=order_no[i]%>" method="post"><input class = "reject" type = "submit" value = "거절"></input></form>
+            <%}%>
+            <%if(state[i] == "수락"){ %>
+                <form action =  "./e_recieve/:<%=order_no[i]%>" method="post" ><input class = "recieve" type = "submit" value = "수령"></input></form>
+            <%}%>
+            <%if(state[i] == "거절" || state[i] == "수령"){ %>
+            <%}%>
+          </td>
+
+          <td><%=price[i]%></td>
+        </tr>
+
+        <tr>
+          <td colspan="7"><hr /></td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

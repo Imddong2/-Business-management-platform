@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>로그인</title>
+</head>
+<style>
+body{
+  color: #551A8B;
+}
+   .login {
+      float: left;
+      width: 100%;
+      text-align: center;
+   }
+
+   input::placeholder {
+      font-style: italic;
+      color: #3C50D2;
+   }
+   #referer{
+     display: none;
+   }
+   #login_button{
+     border-color: #551A8B;
+     background-color: #551A8B;
+     color: #F1FFDB;
+   }
+</style>
+<body>
+   <form class="login" action="/login" method="POST">
+      <input type="text" id = "referer" name="referer" value="<%=referer%>">
+      <div style="text-align: center; height: 120px; padding-top:80px;">
+         <h1 style="color: #551A8B;">로그인</h1>
+      </div>
+      <div>
+          <input type="radio" name="master" value="1">업체
+          <input type="radio" name="master" value="0">회원<br>
+         <div>
+            <input type="text" id="id" name="id" placeholder="      아이디"
+               style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2;"><br>
+         </div>
+         <div style="margin-top: 30px;">
+            <input type="password" id="pwd" name="pwd" placeholder="      비밀번호"
+               style="width:300px; height:30px; border-radius: 5px; border: 2px solid #3C50D2;"><br>
+         </div>
+         <div style="margin-top:30px;">
+
+            <input id="login_button" type="submit" value="로그인"
+               style="width: 100px; height: 30px;" /> <br>
+         </div>
+      </div>
+   </form>
+</body>
+</html>
